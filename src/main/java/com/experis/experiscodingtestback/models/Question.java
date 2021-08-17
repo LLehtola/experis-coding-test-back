@@ -1,15 +1,12 @@
 package com.experis.experiscodingtestback.models;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "question")
 public class Question {
+
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 

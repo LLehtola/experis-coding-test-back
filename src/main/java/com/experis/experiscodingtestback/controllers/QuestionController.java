@@ -11,6 +11,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = ControllerHelpers.API_V1 + "/questions")
+@CrossOrigin
+
 public class QuestionController {
 
     @Autowired
