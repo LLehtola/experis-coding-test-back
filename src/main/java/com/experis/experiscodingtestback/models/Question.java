@@ -1,6 +1,10 @@
 package com.experis.experiscodingtestback.models;
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "question")
@@ -24,6 +28,20 @@ public class Question {
 
     @Column(name = "type")
     private QuestionType type;
+
+    @OneToMany(mappedBy="question")
+    List<Answer> answers;
+
+    @JsonGetter("answers")
+    public List<String> answersGetter() {
+        if(answers != null){
+            return answers.stream()
+                    .map(answer -> {
+                        return "/api/v1/answers/" + answer.getId();
+                    }).collect(Collectors.toList());
+        }
+        return null;
+    }
 
     public long getId() {
         return id;
@@ -71,5 +89,13 @@ public class Question {
 
     public void setType(QuestionType type) {
         this.type = type;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }
