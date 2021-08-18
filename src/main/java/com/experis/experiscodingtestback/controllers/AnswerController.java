@@ -24,9 +24,9 @@ public class AnswerController {
         return new ResponseEntity<>(answers, HttpStatus.OK);
     }
 
-    @PostMapping()
-    public ResponseEntity<Integer> addAnswers(@RequestBody List<Answer> answers) {
-        int result = answerService.addAnswers(answers);
+    @PostMapping("/user/{userId}")
+    public ResponseEntity<Integer> addAnswers(@RequestBody List<Answer> answers, @PathVariable long userId) {
+        int result = answerService.addAnswers(answers, userId);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 }
