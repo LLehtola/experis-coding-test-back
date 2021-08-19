@@ -25,6 +25,11 @@ public class UserService {
         return userRepository.existsById(id);
     }
 
+    public boolean emailExists(String email) { return userRepository.existsUserByEmail(email);}
+
+
+
+
     public User findUser(long id) {
         Optional<User> optionalUser = userRepository.findById(id);
         return optionalUser.orElseGet(User::new);

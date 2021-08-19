@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = ControllerHelpers.API_V1 + "/users")
 public class UserController {
@@ -40,6 +41,14 @@ public class UserController {
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(user, status);
     }
+
+    @GetMapping(value="/checkuser")
+    public ResponseEntity <Boolean> checkUser(@RequestParam String email) {
+        boolean users = userService.emailExists(email);
+        HttpStatus status = HttpStatus.OK;
+        return new ResponseEntity<>(users, status);
+    }
+
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User newUser) {
