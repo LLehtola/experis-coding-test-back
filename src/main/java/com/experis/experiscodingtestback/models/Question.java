@@ -1,5 +1,6 @@
 package com.experis.experiscodingtestback.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class Question {
     @Column(name = "type")
     private QuestionType type;
 
+    @JsonIgnore
     @OneToMany(mappedBy="question")
     List<Answer> answers;
 
