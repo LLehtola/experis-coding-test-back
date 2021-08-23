@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Other ###
+**/resources/firebase_config.json
