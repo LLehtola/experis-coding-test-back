@@ -1,6 +1,7 @@
 package com.experis.experiscodingtestback.controllers;
 
 import com.experis.experiscodingtestback.models.Answer;
+import com.experis.experiscodingtestback.models.User;
 import com.experis.experiscodingtestback.services.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,9 +25,21 @@ public class AnswerController {
         return new ResponseEntity<>(answers, HttpStatus.OK);
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Answer>> getAnswersById(@PathVariable long id) {
+        List<Answer> answers = answerService.getAnswersById(id);
+        return new ResponseEntity<>(answers, HttpStatus.OK);
+    }
+
+
+
+
+
     @PostMapping("/user/{userId}")
     public ResponseEntity<Integer> addAnswers(@RequestBody List<Answer> answers, @PathVariable long userId) {
         int result = answerService.addAnswers(answers, userId);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
+
+
 }

@@ -17,6 +17,12 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name="answerdate")
+    private String answerdate;
+
+    @Column(name="points")
+    private Integer points;
+
     @OneToMany(mappedBy="user")
     List<Answer> answers;
 
@@ -46,6 +52,23 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public String getAnswerdate() {
+        return answerdate;
+    }
+
+    public void setAnswerdate(String answerdate) {
+        this.answerdate = answerdate;
+    }
+
 
     public List<Answer> getAnswers() {
         return answers;

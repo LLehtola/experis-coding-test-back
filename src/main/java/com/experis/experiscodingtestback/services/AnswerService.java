@@ -23,6 +23,18 @@ public class AnswerService {
         return answerRepository.findAll();
     }
 
+
+
+    public List<Answer> getAnswersById(long id) {
+        //User returnUser = userRepository.findById(id).get();
+        return answerRepository.findAllByUserId(id);
+    }
+    /*
+    public List<Answer> getAnswersById(String id) {
+        return answerRepository.getAnswersById(id);
+    }
+*/
+
     public int addAnswers(List<Answer> answers, long userId) {
         int result = 0;
         User user = userRepository.getById(userId);
@@ -33,6 +45,8 @@ public class AnswerService {
             savedAnswers.add(answer);
             result += checkResult(answer);
         }
+        user.setPoints(result);
+        userRepository.save(user);
         return result;
     }
 

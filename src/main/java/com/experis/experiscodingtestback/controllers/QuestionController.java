@@ -1,5 +1,6 @@
 package com.experis.experiscodingtestback.controllers;
 
+
 import com.experis.experiscodingtestback.models.Question;
 import com.experis.experiscodingtestback.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,11 @@ public class QuestionController {
         Question addedQuestion = questionService.createQuestion(question);
         return new ResponseEntity<>(addedQuestion, HttpStatus.CREATED);
     }
+
+    @GetMapping("/answer/{id}")
+    public ResponseEntity<List<Question>> getQuestionsByAnswerId(@PathVariable long id) {
+        List<Question> questions = questionService.getQuestionsByAnswerId(id);
+        return new ResponseEntity<>(questions, HttpStatus.OK);
+    }
+
 }
