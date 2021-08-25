@@ -6,6 +6,9 @@ import com.google.firebase.auth.FirebaseToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -26,20 +29,33 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         try {
-            System.out.println("request dofilter..." + request);
-            verifyToken(request);
-        } catch (FirebaseAuthException e) {
+            FirebaseToken decodedToken = verifyToken(request);
+            Admin admin = firebaseTokentoAdmin(decodedToken);
+            if (admin != null) {
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(admin, null, admin.getAuthorities());
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         filterChain.doFilter(request, response);
+
     }
 
-    private void verifyToken(HttpServletRequest request) throws FirebaseAuthException {
-        System.out.println("request: " + request);
+    private FirebaseToken verifyToken(HttpServletRequest request) throws FirebaseAuthException {
         String token = securityService.getBearerToken(request);
-        System.out.println("token: " + token);
         FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(token);
-        System.out.println("decoded token: " + decodedToken);
+        return decodedToken;
+    }
 
+    private Admin firebaseTokentoAdmin(FirebaseToken token) {
+        Admin admin = null;
+        if (token != null) {
+            admin = new Admin();
+            admin.setId(token.getUid());
+        }
+        return admin;
     }
 }

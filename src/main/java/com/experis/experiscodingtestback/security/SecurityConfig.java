@@ -15,10 +15,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityFilter securityFilter;
 
+    @Autowired
+    private AuthEntryPointJwt authEntryPointJwt;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-                .authorizeRequests()
+                .exceptionHandling()
+                .authenticationEntryPoint(authEntryPointJwt)
+                .and().authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/v1/questions").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/users/checkuser").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
