@@ -31,6 +31,25 @@ public class QuestionController {
         return new ResponseEntity<>(addedQuestion, HttpStatus.CREATED);
     }
 
+    @PutMapping(value = "/answer/{id}")
+    public ResponseEntity<Question> updateQuestion(
+            @PathVariable long id, @RequestBody Question newQuestion
+    ) {
+        if (id != newQuestion.getId()) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        boolean questionFound = questionService.questionExists(id);
+        Question returnQuestion = questionService.saveQuestion(newQuestion);
+        HttpStatus status;
+        if (questionFound) {
+            status = HttpStatus.NO_CONTENT;
+        } else {
+            status = HttpStatus.CREATED;
+        }
+        return new ResponseEntity<>(returnQuestion, status);
+    }
+
+
     @GetMapping("/answer/{id}")
     public ResponseEntity<List<Question>> getQuestionsByAnswerId(@PathVariable long id) {
         List<Question> questions = questionService.getQuestionsByAnswerId(id);

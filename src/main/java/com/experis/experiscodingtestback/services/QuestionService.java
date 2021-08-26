@@ -21,6 +21,14 @@ public class QuestionService {
         return questionRepository.save(question);
     }
 
+    public boolean questionExists(long id) {
+        return questionRepository.existsById(id);
+    }
+
+    public Question saveQuestion(Question question) {
+        return questionRepository.save(question);
+    }
+
     public List<Question> getQuestionsByAnswerId(long id) {
         return questionRepository.findAllByAnswersId(id);
     }

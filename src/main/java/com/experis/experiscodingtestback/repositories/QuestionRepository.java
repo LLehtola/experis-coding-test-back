@@ -10,5 +10,7 @@ import java.util.List;
 public interface QuestionRepository extends JpaRepository<Question, Answer> {
 
     List<Question> findAllByAnswersId(long id);
+
+    boolean existsById(long id);
 }
 
