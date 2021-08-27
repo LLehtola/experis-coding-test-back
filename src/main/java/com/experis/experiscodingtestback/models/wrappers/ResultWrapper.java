@@ -2,6 +2,7 @@ package com.experis.experiscodingtestback.models.wrappers;
 
 public class ResultWrapper {
     private String question;
+    private String code;
     private String correctAnswer;
     private String userAnswer;
 
@@ -19,6 +20,14 @@ public class ResultWrapper {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getCorrectAnswer() {
