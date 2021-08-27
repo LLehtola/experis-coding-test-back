@@ -78,6 +78,7 @@ public class AnswerService {
             resultWrapper.setUserAnswer(answer.getAnswer());
             resultWrapper.setQuestion(question.getQuestion());
             resultWrapper.setCorrectAnswer(question.getCorrectAnswer());
+            resultWrapper.setCode(question.getCode());
             userAnswers.add(resultWrapper);
         }
         return userAnswers;
