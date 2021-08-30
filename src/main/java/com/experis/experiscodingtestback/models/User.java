@@ -1,6 +1,7 @@
 package com.experis.experiscodingtestback.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,6 +24,9 @@ public class User {
     @Column(name="points")
     private Integer points;
 
+    @Column(name="hasbeencontacted",columnDefinition = "boolean default false")
+    private boolean hasbeencontacted;
+
     @OneToMany(mappedBy="user")
     List<Answer> answers;
 
@@ -43,6 +47,14 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public boolean isHasbeencontacted() {
+        return hasbeencontacted;
+    }
+
+    public void setHasbeencontacted(boolean hasbeencontacted) {
+        this.hasbeencontacted = hasbeencontacted;
     }
 
     public String getEmail() {
@@ -68,7 +80,6 @@ public class User {
     public void setAnswerdate(String answerdate) {
         this.answerdate = answerdate;
     }
-
 
     public List<Answer> getAnswers() {
         return answers;
