@@ -25,13 +25,19 @@ public class QuestionController {
         return new ResponseEntity<>(questions, HttpStatus.OK);
     }
 
+    @GetMapping("/test")
+    public ResponseEntity<List<Question>> getTestQuestions() {
+        List<Question> questions = questionService.getTestQuestions();
+        return new ResponseEntity<>(questions, HttpStatus.OK);
+    }
+
     @PostMapping()
     public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
         Question addedQuestion = questionService.createQuestion(question);
         return new ResponseEntity<>(addedQuestion, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/answer/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<Question> updateQuestion(
             @PathVariable long id, @RequestBody Question newQuestion
     ) {
