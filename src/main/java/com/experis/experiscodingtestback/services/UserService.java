@@ -42,4 +42,10 @@ public class UserService {
         }
         return false;
     }
+
+
+    public User patchUser(User user) {
+        return userRepository.save(user);
+
+    }
 }

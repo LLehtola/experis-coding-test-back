@@ -1,6 +1,8 @@
 package com.experis.experiscodingtestback.controllers;
 
+import com.experis.experiscodingtestback.models.Question;
 import com.experis.experiscodingtestback.models.User;
+import com.experis.experiscodingtestback.repositories.UserRepository;
 import com.experis.experiscodingtestback.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping
     public ResponseEntity<List<User>> getUsers() {
@@ -66,6 +71,26 @@ public class UserController {
         returnUser = userService.saveUser(newUser);
         return new ResponseEntity<>(returnUser, status);
     }
+
+    @PatchMapping(value="/{id}")
+    public ResponseEntity<User> patchUser(@PathVariable long id, @RequestBody User contactedUpdate) {
+        User returnUser = new User();
+        User user = userRepository.findById(id).get();
+        user.setHasbeencontacted(contactedUpdate.isHasbeencontacted());
+        returnUser = userService.patchUser(user);
+        HttpStatus status = HttpStatus.CREATED;
+        return new ResponseEntity<>(returnUser, status);
+
+
+
+    }
+
+
+
+
+
+
+
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable long id) {
