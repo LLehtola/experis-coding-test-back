@@ -28,7 +28,6 @@ public class QuestionService {
             if (question.getType() == MULTIPLECHOICE) {
                 ArrayList<String> answerOptions = question.getAnswerOptions();
                 Collections.shuffle(answerOptions);
-                question.setCorrectAnswer("");
                 question.setAnswerOptions(answerOptions);
             }
             shuffledQuestions.add(question);
