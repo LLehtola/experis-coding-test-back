@@ -33,13 +33,3 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
-jar {
-    manifest {
-        attributes "Main-Class": "com.experis.experiscodingtestback"
-    }
-
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-}
