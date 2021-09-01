@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDate;
 
 @Service
 public class AnswerService {
@@ -49,6 +50,7 @@ public class AnswerService {
         int result = 0;
         User user = userRepository.getById(userId);
         List<Answer> savedAnswers = new ArrayList<>();
+        LocalDate date = LocalDate.now();
         for (Answer answer: answers) {
             answer.setUser(user);
             answerRepository.save(answer);
@@ -56,6 +58,7 @@ public class AnswerService {
             result += checkResult(answer);
         }
         user.setPoints(result);
+        user.setAnswerdate(date.toString());
         userRepository.save(user);
         return result;
     }
