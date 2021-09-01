@@ -1,1 +1,1 @@
-web: java -jar build/libs/experis-coding-test-back-1.0.jar
+web: java -jar build/libs/experis-coding-test-back-0.0.1-SNAPSHOT.jar
