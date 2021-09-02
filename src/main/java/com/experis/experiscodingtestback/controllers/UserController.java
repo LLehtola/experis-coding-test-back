@@ -3,13 +3,18 @@ package com.experis.experiscodingtestback.controllers;
 import com.experis.experiscodingtestback.models.Question;
 import com.experis.experiscodingtestback.models.User;
 import com.experis.experiscodingtestback.repositories.UserRepository;
+import com.experis.experiscodingtestback.services.RecaptchaService;
 import com.experis.experiscodingtestback.services.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -23,6 +28,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RecaptchaService captchaService;
+
     @GetMapping
     public ResponseEntity<List<User>> getUsers() {
         List<User> users = userService.getAllUsers();
@@ -35,6 +43,22 @@ public class UserController {
         User newUser = userService.saveUser(user);
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(newUser, status);
+    }
+
+    @PostMapping("/verify")
+    public ResponseEntity<?> verifyRecaptcha(@RequestParam String recaptchaResponse,
+                                    HttpServletRequest request
+    ){
+        String ip = request.getRemoteAddr();
+        String captchaVerifyMessage =
+                captchaService.verifyRecaptcha(ip, recaptchaResponse);
+        if (StringUtils.isNotEmpty(captchaVerifyMessage)) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", captchaVerifyMessage);
+            return ResponseEntity.badRequest()
+                    .body(response);
+        }
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "/{id}")
