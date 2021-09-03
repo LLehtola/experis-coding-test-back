@@ -5,7 +5,6 @@ import com.experis.experiscodingtestback.models.User;
 import com.experis.experiscodingtestback.repositories.UserRepository;
 import com.experis.experiscodingtestback.services.RecaptchaService;
 import com.experis.experiscodingtestback.services.UserService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,19 +45,16 @@ public class UserController {
     }
 
     @PostMapping("/verify")
-    public ResponseEntity<?> verifyRecaptcha(@RequestParam String recaptchaResponse,
-                                    HttpServletRequest request
-    ){
+    public ResponseEntity<Boolean> verifyRecaptcha(@RequestParam String recaptchaResponse,
+                                    HttpServletRequest request){
         String ip = request.getRemoteAddr();
-        String captchaVerifyMessage =
+        boolean captchaVerifiedSuccessfully =
                 captchaService.verifyRecaptcha(ip, recaptchaResponse);
-        if (StringUtils.isNotEmpty(captchaVerifyMessage)) {
-            Map<String, Object> response = new HashMap<>();
-            response.put("message", captchaVerifyMessage);
-            return ResponseEntity.badRequest()
-                    .body(response);
+        if (!captchaVerifiedSuccessfully || recaptchaResponse == null) {
+            return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok().build();
+        return new ResponseEntity<>(true, HttpStatus.OK);
+
     }
 
     @GetMapping(value = "/{id}")
