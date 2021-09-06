@@ -12,14 +12,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = ControllerHelpers.API_V1 + "/questions")
-@CrossOrigin
 
 public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Question>> getAllQuestions() {
         List<Question> questions = questionService.getAllQuestions();
         return new ResponseEntity<>(questions, HttpStatus.OK);
@@ -31,13 +30,13 @@ public class QuestionController {
         return new ResponseEntity<>(questions, HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
         Question addedQuestion = questionService.createQuestion(question);
         return new ResponseEntity<>(addedQuestion, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Question> updateQuestion(
             @PathVariable long id, @RequestBody Question newQuestion
     ) {

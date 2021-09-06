@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin
 @RestController
 @RequestMapping(value = ControllerHelpers.API_V1 + "/users")
 public class UserController {
@@ -57,7 +56,7 @@ public class UserController {
 
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable long id) {
         if (!userService.userExists(id)) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -67,7 +66,7 @@ public class UserController {
         return new ResponseEntity<>(user, status);
     }
 
-    @GetMapping(value="/checkuser")
+    @GetMapping("/checkuser")
     public ResponseEntity <Boolean> checkUser(@RequestParam String email) {
         boolean users = userService.emailExists(email);
         HttpStatus status = HttpStatus.OK;
@@ -75,7 +74,7 @@ public class UserController {
     }
 
 
-    @PutMapping(value = "/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User newUser) {
         User returnUser = new User();
         HttpStatus status;
@@ -92,7 +91,7 @@ public class UserController {
         return new ResponseEntity<>(returnUser, status);
     }
 
-    @PatchMapping(value="/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<User> patchUser(@PathVariable long id, @RequestBody User contactedUpdate) {
         User returnUser = new User();
         User user = userRepository.findById(id).get();
@@ -100,19 +99,9 @@ public class UserController {
         returnUser = userService.patchUser(user);
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(returnUser, status);
-
-
-
     }
 
-
-
-
-
-
-
-
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable long id) {
         if (!userService.userExists(id)) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

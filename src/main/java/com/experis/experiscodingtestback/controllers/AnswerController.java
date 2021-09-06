@@ -10,24 +10,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = ControllerHelpers.API_V1 + "/answers")
-@CrossOrigin
 
 public class AnswerController {
 
     @Autowired
     private AnswerService answerService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Answer>> getAnswers() {
         List<Answer> answers = answerService.getAnswers();
         return new ResponseEntity<>(answers, HttpStatus.OK);
     }
 
-    @GetMapping("user/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<Object>> getAnswersByUserId(@PathVariable long userId) {
         List<Object> response = answerService.getAnswersByUserId(userId);
         return new ResponseEntity<>(response, HttpStatus.OK);
