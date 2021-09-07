@@ -12,11 +12,12 @@ import java.util.List;
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     List<Question> findAllByAnswersId(long id);
+    boolean existsById(long id);
+
     @Query(
             value = "SELECT * FROM question WHERE question.hidden = false AND question.category = ?1",
             nativeQuery = true
     )
     List<Question> findAllByCategory(int category);
-    boolean existsById(long id);
 }
 
