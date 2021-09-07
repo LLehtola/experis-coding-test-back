@@ -1,8 +1,8 @@
 {
   "type": "service_account",
   "project_id": "experis-coding-test",
-  "private_key_id": "$FIREBASE_PRIVATE_KEY_ID",
-  "private_key": "$FIREBASE_PRIVATE_KEY",
+  "private_key_id": "c984b21df20746aa02c0b4bdccb297eb90584dda",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDuoyMGBHFHCdzW\nPd9sqsK3wr2YZk2KFNMc+RZdAlmmkOP2G62lFS0xmgkZqj8mr7TdRVNPm0SSvy6J\nqIgmaMdOxFBnrlUlqZ0StR0lAP9MTnwTnqawzFNXgjAOHI/dom5Es2kQeMK2F5Uy\nkce0gVoK1syQCxCQF9tj49hgc4SdZaKBRIT694saG+hCrveifDyZ8KrhXakVk/rj\ndrM/HGuV3gGU3v+WAKUheLoycNTqIFkyR+d8kMF6WBCCj5vKy0ljfiWgZ2kUEDvP\nmvRYff8rNK/Xbw8va5gqTX4tZ59fhY9Ec/ktmoCl1YFqf1tqi9o8Rhk5mKm70V7a\no5XTv7ULAgMBAAECggEAcKVhav292yK0tA0Q4mLY95VdmgrwnzWlUg/ilpT9bLsI\nYKxAE6UjaD6l/Q94L/LRFYIcCX/pprvIZALCAh+DtZLFwatxVg3yr1n/H/CQkpyZ\nxUkmtl49GRnDRWYGI0EBfDyUY8odX4dSTkSyWGqW7nbmqTgP4XThgw2SnjTpbMIb\ns43IXO6FnHwr4Nv0sPce8TtHY79V9eehVCYsmgirfsMe36LUxeeXTrnQm4cCVS06\nZ0W1MlMiryIAPUmUluUC3xBvH1IlzX4G+9re2J1oqH44h1Y0uNsunHZNw8xUhaxa\nkxa3wAnD6Vtgdb79nqfbQXNO+ibK/Jt11aH2p1M1gQKBgQD/RDUOH1qz4QtICmLb\nPWCllOp/pK042cdAzfJ2A4aMRcJdrn1B+4u5uFqkoqVTMbJZMNw4FFjWKTnp123E\ne7JVguwlDXvE1SZbl0l81K4C4HpWDoFhqXCSuT4vjNgEVHRanUs320hgP3z6Q9kJ\nREiQOUYp1xQVQWzkC0Yk8dClMwKBgQDvUrInhsCAimlVGyuPaXIMp/44OHZ/jITW\nt8egM6nzpDHnRRoCHZCuUiLsJEmSTWLQxFDnJfLDgty/3SpMnRG427XVA/tJ80e2\nTI95mr/BdNdWoJ9UBvD2jKABJ4chFYUOQsmZvlk+XPN9aPziWunm1N6Q789HU1i9\n7dG4kVoAyQKBgQC0vVOfiz3KrWYyfQAf4aaDtxwOgsgPv8sgLHInczmaKm6DrF+O\nD5CQUGMFvQ+4BzETi8/xeR6pjIkv9FQJUdgkSc3wMkrXRGCja0wiMeh/qveT5TNg\ntfs6OCU6v8vXzQCRhFvU0dO+KlXQUafjstB6JcNzLpFOt4NlOEJTOFCWFwKBgE0n\nU9f6UUUfWiXdxIVPcT0zS3nEei9Uld7DENBM15V8cbolROU5stMAF9IZQL6xxBGZ\nuJtMWJ8/KPuRyXk5ieUWr+AkkHaev5e9xuNlSDyN9n4u+i6UrkpNu6ejnqTD00lt\nrqCqBQtd3AGqPxyaQp3wMnB3X1OXQxy39syRz3pBAoGBAOhzWUnoKHnGPj5puEyI\nmFngK2ZK8lIJiOi+kMkKRreAV9kueAj9iZb22eM+W1EZqhSLcTnOc38fwAUXlR3G\neW7TDZkJNHqHfydgrlErS+0g4xkrBd6QMS0RWOzzSal6K8HLBhjN04Ki0HsWafjZ\n7uLZICxuh0A8OVpkwPMTW0l4\n-----END PRIVATE KEY-----\n",
   "client_email": "firebase-adminsdk-3waad@experis-coding-test.iam.gserviceaccount.com",
   "client_id": "115369416561898225701",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
