@@ -29,8 +29,13 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         try {
-            FirebaseToken decodedToken = verifyToken(request);
-            Admin admin = firebaseTokentoAdmin(decodedToken);
+            Admin admin = null;
+            try {
+                FirebaseToken decodedToken = verifyToken(request);
+                admin = firebaseTokenToAdmin(decodedToken);
+            } catch (IllegalArgumentException iae) {
+                System.out.println(iae);
+            }
             if (admin != null) {
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(admin, null, admin.getAuthorities());
@@ -50,7 +55,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         return decodedToken;
     }
 
-    private Admin firebaseTokentoAdmin(FirebaseToken token) {
+    private Admin firebaseTokenToAdmin(FirebaseToken token) {
         Admin admin = null;
         if (token != null) {
             admin = new Admin();

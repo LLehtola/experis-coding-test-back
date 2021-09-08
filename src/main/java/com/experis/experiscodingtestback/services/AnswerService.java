@@ -12,11 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class AnswerService {
@@ -50,7 +46,7 @@ public class AnswerService {
         int result = 0;
         User user = userRepository.getById(userId);
         List<Answer> savedAnswers = new ArrayList<>();
-        LocalDate date = LocalDate.now();
+        Date date = new Date();
         for (Answer answer: answers) {
             answer.setUser(user);
             answerRepository.save(answer);
@@ -58,7 +54,7 @@ public class AnswerService {
             result += checkResult(answer);
         }
         user.setPoints(result);
-        user.setAnswerdate(date.toString());
+        user.setAnswerdate(date);
         userRepository.save(user);
         return result;
     }

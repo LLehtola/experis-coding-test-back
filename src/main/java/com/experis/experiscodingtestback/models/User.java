@@ -1,9 +1,9 @@
 package com.experis.experiscodingtestback.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +19,7 @@ public class User {
     private String email;
 
     @Column(name="answerdate")
-    private String answerdate;
+    private Date answerdate;
 
     @Column(name="points")
     private Integer points;
@@ -27,7 +27,7 @@ public class User {
     @Column(name="hasbeencontacted",columnDefinition = "boolean default false")
     private boolean hasbeencontacted;
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     List<Answer> answers;
 
     @JsonGetter("answers")
@@ -73,11 +73,11 @@ public class User {
         this.points = points;
     }
 
-    public String getAnswerdate() {
+    public Date getAnswerdate() {
         return answerdate;
     }
 
-    public void setAnswerdate(String answerdate) {
+    public void setAnswerdate(Date answerdate) {
         this.answerdate = answerdate;
     }
 

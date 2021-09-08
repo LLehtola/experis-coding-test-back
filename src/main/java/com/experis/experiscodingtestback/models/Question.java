@@ -30,6 +30,12 @@ public class Question {
     @Column(name = "type")
     private QuestionType type;
 
+    @Column(name = "category")
+    private QuestionCategory category;
+
+    @Column(name = "hidden")
+    private boolean hidden = false;
+
     @JsonIgnore
     @OneToMany(mappedBy="question")
     List<Answer> answers;
@@ -91,6 +97,22 @@ public class Question {
 
     public void setType(QuestionType type) {
         this.type = type;
+    }
+
+    public QuestionCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(QuestionCategory category) {
+        this.category = category;
+    }
+
+    public boolean isHidden() {
+        return hidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        this.hidden = hidden;
     }
 
     public List<Answer> getAnswers() {

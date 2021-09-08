@@ -2,6 +2,7 @@ package com.experis.experiscodingtestback.controllers;
 
 
 import com.experis.experiscodingtestback.models.Question;
+import com.experis.experiscodingtestback.models.User;
 import com.experis.experiscodingtestback.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,14 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = ControllerHelpers.API_V1 + "/questions")
-@CrossOrigin
 
 public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Question>> getAllQuestions() {
         List<Question> questions = questionService.getAllQuestions();
         return new ResponseEntity<>(questions, HttpStatus.OK);
@@ -31,16 +31,15 @@ public class QuestionController {
         return new ResponseEntity<>(questions, HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
         Question addedQuestion = questionService.createQuestion(question);
         return new ResponseEntity<>(addedQuestion, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Question> updateQuestion(
-            @PathVariable long id, @RequestBody Question newQuestion
-    ) {
+            @PathVariable long id, @RequestBody Question newQuestion) {
         if (id != newQuestion.getId()) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
@@ -55,6 +54,19 @@ public class QuestionController {
         return new ResponseEntity<>(returnQuestion, status);
     }
 
+    @PutMapping("/hide/{id}")
+    public ResponseEntity<Question> hideOrShowQuestion(@PathVariable long id, @RequestBody Question question) {
+        if (id != question.getId()) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        Question returnQuestion = null;
+        boolean questionFound = questionService.questionExists(id);
+        if (questionFound) {
+            returnQuestion = questionService.hideOrShowHidden(id, question);
+
+        }
+        return new ResponseEntity<>(returnQuestion, HttpStatus.OK);
+    }
 
     @GetMapping("/answer/{id}")
     public ResponseEntity<List<Question>> getQuestionsByAnswerId(@PathVariable long id) {
