@@ -4,7 +4,6 @@ import com.experis.experiscodingtestback.models.Question;
 import com.experis.experiscodingtestback.models.QuestionCategory;
 import com.experis.experiscodingtestback.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

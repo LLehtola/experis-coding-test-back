@@ -14,7 +14,15 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<User> getAllUsers() {
+        deleteUsersByExpiryDate();
         return userRepository.findAll();
+    }
+
+    public void deleteUsersByExpiryDate() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        Date expiryDate = cal.getTime();
+        userRepository.deleteByAnswerdateBefore(expiryDate);
     }
 
     public User saveUser(User user) {
