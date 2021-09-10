@@ -1,5 +1,6 @@
 package com.experis.experiscodingtestback.services;
 
+import com.experis.experiscodingtestback.models.Question;
 import com.experis.experiscodingtestback.models.User;
 import com.experis.experiscodingtestback.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class UserService {
         cal.add(Calendar.MONTH, -1);
         Date expiryDate = cal.getTime();
         userRepository.deleteByAnswerdateBefore(expiryDate);
+    }
+
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
     public User saveUser(User user) {

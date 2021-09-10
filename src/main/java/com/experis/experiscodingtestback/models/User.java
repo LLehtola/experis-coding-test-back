@@ -27,6 +27,15 @@ public class User {
     @Column(name="hasbeencontacted",columnDefinition = "boolean default false")
     private boolean hasbeencontacted;
 
+    @Column(name = "background")
+    private String background;
+
+    @Column(name = "career")
+    private String career;
+
+    @Column(name = "other")
+    private String other;
+
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     List<Answer> answers;
 
@@ -79,6 +88,30 @@ public class User {
 
     public void setAnswerdate(Date answerdate) {
         this.answerdate = answerdate;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+
+    public String getCareer() {
+        return career;
+    }
+
+    public void setCareer(String career) {
+        this.career = career;
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
     }
 
     public List<Answer> getAnswers() {
