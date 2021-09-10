@@ -5,6 +5,7 @@ import com.experis.experiscodingtestback.models.User;
 import com.experis.experiscodingtestback.repositories.UserRepository;
 import com.experis.experiscodingtestback.services.RecaptchaService;
 import com.experis.experiscodingtestback.services.UserService;
+import com.google.api.Http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +39,8 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        User newUser = userService.saveUser(user);
-        HttpStatus status = HttpStatus.CREATED;
-        return new ResponseEntity<>(newUser, status);
+        User addedUser = userService.createUser(user);
+        return new ResponseEntity<>(addedUser, HttpStatus.CREATED);
     }
 
     @PostMapping("/verify")
