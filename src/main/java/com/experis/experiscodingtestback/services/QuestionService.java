@@ -18,10 +18,16 @@ public class QuestionService {
     @Autowired
     private QuestionRepository questionRepository;
 
+    //Finds all questions
     public List<Question> getAllQuestions() {
         return questionRepository.findAll();
     }
 
+    /* Finds all questions by categories to separate lists
+    * Checks the type of code questions and shuffles answer options if there is any
+    * Shuffles all code questions and adds them to questions list
+    * Returns a list which contains at first personal questions and after them shuffled code questions
+    */
     public List<Question> getTestQuestions() {
         List <Question> questions = questionRepository.findAllByCategory(QuestionCategory.PERSONAL.ordinal());
         List <Question> codeQuestions = questionRepository.findAllByCategory(QuestionCategory.CODE.ordinal());
@@ -39,6 +45,10 @@ public class QuestionService {
         return questions;
     }
 
+    /* Finds question by id
+    * Sets the value of the hidden from false to true and and vice versa
+    * Return the updated question
+    */
     public Question hideOrShowHidden(long id, Question question) {
         Question returnQuestion = questionRepository.findById(id).get();
         returnQuestion.setHidden(!question.isHidden());

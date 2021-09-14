@@ -30,18 +30,16 @@ public class AnswerService {
         return answerRepository.findAll();
     }
 
-
-
     public List<Answer> getAnswersById(long id) {
-        //User returnUser = userRepository.findById(id).get();
         return answerRepository.findAllByUserId(id);
     }
-    /*
-    public List<Answer> getAnswersById(String id) {
-        return answerRepository.getAnswersById(id);
-    }
-*/
 
+    /* Saves answers from the list to the database
+    * Sets a user for answers
+    * Calls an another method which checks if the answer is correct and
+    * adds points to result variable
+    * Returns result as an integer
+    */
     public int addAnswers(List<Answer> answers, long userId) {
         int result = 0;
         User user = userRepository.getById(userId);
@@ -59,6 +57,7 @@ public class AnswerService {
         return result;
     }
 
+    //Checks if the user answer match for the correct answer of the question
     private int checkResult(Answer answer) {
         if (answer.getQuestion().getCorrectAnswer().equals(answer.getAnswer())) {
             return 10;
@@ -66,6 +65,12 @@ public class AnswerService {
         return 0;
     }
 
+    /* Checks if the user exists by given user id
+    * If not throws an exception
+    * Finds all answers by given user id and questions for found answers
+    * Creates wrapper objects which contain a collection of needed data from answers and questions
+    * Returns list of wrapper objects
+    */
     public List<Object> getAnswersByUserId(long userId) {
         if(!userRepository.existsById(userId))
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");

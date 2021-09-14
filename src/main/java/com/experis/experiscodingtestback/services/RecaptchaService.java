@@ -23,6 +23,10 @@ public class RecaptchaService {
     @Autowired
     RestTemplateBuilder restTemplateBuilder;
 
+    /* Invokes the Captcha verify service with the response key and the IP address
+    * The result of the verification is either a success or a failure
+    * Returns the boolean depending if verification is success or not
+    */
     public boolean verifyRecaptcha(String ip, String recaptchaResponse){
         Map<String, String> body = new HashMap<>();
         body.put("secret", recaptchaSecret);
@@ -36,7 +40,6 @@ public class RecaptchaService {
 
         Map<String, Object> responseBody =
                 recaptchaResponseEntity.getBody();
-
 
         boolean recaptchaSuccess = (Boolean)responseBody.get("success");
         if (!recaptchaSuccess) {

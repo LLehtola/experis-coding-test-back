@@ -14,11 +14,18 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    /* Calls a method to delete users by expiry date
+    * Finds and returns all exists users
+    */
     public List<User> getAllUsers() {
         deleteUsersByExpiryDate();
         return userRepository.findAll();
     }
 
+    /* Checks the current date by using Calendar
+    * Decreases a month from the current date
+    * Deletes all users which are created before the expiry date
+    */
     public void deleteUsersByExpiryDate() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);
@@ -41,8 +48,6 @@ public class UserService {
     public boolean emailExists(String email) { return userRepository.existsUserByEmail(email);}
 
 
-
-
     public User findUser(long id) {
         Optional<User> optionalUser = userRepository.findById(id);
         return optionalUser.orElseGet(User::new);
@@ -56,9 +61,7 @@ public class UserService {
         return false;
     }
 
-
     public User patchUser(User user) {
         return userRepository.save(user);
-
     }
 }
