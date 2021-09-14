@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "0be48418-d08b-458a-9dda-b04038f5c1fb",
+		"name": "experis-coding-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Questions",
+			"item": [
+				{
+					"name": "Get all test questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/questions/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all questions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create question",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"question\": \"Pystytkö aloittamaan koulutuksen 12.1.2022?\",\r\n    \"code\": \"\",\r\n    \"correctAnswer\": \"Kyllä\",\r\n    \"answerOptions\": [\r\n            \"Kyllä\",\r\n            \"Ei\"\r\n    ],\r\n    \"type\": \"MULTIPLECHOICE\",\r\n    \"category\": \"PERSONAL\",\r\n    \"hidden\": false,\r\n    \"answers\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update question",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"question\": \"Pystytkö aloittamaan koulutuksen 12.1.2022?\",\r\n    \"code\": \"\",\r\n    \"correctAnswer\": \"Kyllä\",\r\n    \"answerOptions\": [\r\n            \"Kyllä\",\r\n            \"Ei\"\r\n    ],\r\n    \"type\": \"MULTIPLECHOICE\",\r\n    \"category\": \"PERSONAL\",\r\n    \"hidden\": false,\r\n    \"answers\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/questions/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update hidden value",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"question\": \"Pystytkö aloittamaan koulutuksen 12.1.2022?\",\r\n    \"code\": \"\",\r\n    \"correctAnswer\": \"Kyllä\",\r\n    \"answerOptions\": [\r\n            \"Kyllä\",\r\n            \"Ei\"\r\n    ],\r\n    \"type\": \"MULTIPLECHOICE\",\r\n    \"category\": \"PERSONAL\",\r\n    \"hidden\": false,\r\n    \"answers\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/questions/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get question by answer id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/questions/answer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								"answer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Answers",
+			"item": [
+				{
+					"name": "Get all answers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/answers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"answers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get answers by user id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/answers/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"answers",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create answers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n      {\r\n        \"answer\": \"Kyllä\",\r\n        \"question\": {\r\n          \"id\": 3,\r\n          \"question\": \"Pystytkö aloittamaan koulutuksen 12.1.2022?\",\r\n          \"code\": \"\",\r\n          \"correctAnswer\": \"Kyllä\",\r\n          \"answerOptions\": [\r\n            \"Kyllä\",\r\n            \"Ei\"\r\n          ],\r\n          \"type\": \"MULTIPLECHOICE\",\r\n          \"category\": \"PERSONAL\",\r\n          \"hidden\": false,\r\n          \"answers\": []\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/answers/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"answers",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"test@test\",\r\n        \"answerdate\": null,\r\n        \"background\": \"\",\r\n        \"career\": \"\",\r\n        \"other\": \"\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify recaptcha",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/verify?recaptchaResponse=03AGdBq27393GKOJ-yNB0m2vb_bnntrFqqXD7yUg8lo98tt5Z394FrC0Oc6OIDpoXUUiNO_lY8m9O512q4hU4ys_DW8GgOETzGRxyS19JCn_9Yf1pynzSMjwytIATvvyooJa19kMyFlAQkp3_uCCR6IrJWWUypkvzOrX80VVCEKtkgYdBF07oKIt2qpyu1Co3zWuwyBkV1kW1js28ecfYsF0Lkam40tq9v89DskGPKBpCoO0QQoK5ei3DH4kEtjbBjpPomcSQwFKF3cKqFEOM0ut7TEL4UxmZoqHwa9Dawt6S-R1z-FLhk5FRR7mcs4loaZyuS6g53ZJnqRTlrM05WIwZjXfx_kCL2C38aZQXL4Z5yFWm9JW-n4H4eAKLoSuc7ZNqsOVvpGRp2-DsBPiKWKdtS6d27eNcynadGUPzFft5avOddsd3pm7mDwHmmr60YWoDATK44N09g",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "recaptchaResponse",
+									"value": "03AGdBq27393GKOJ-yNB0m2vb_bnntrFqqXD7yUg8lo98tt5Z394FrC0Oc6OIDpoXUUiNO_lY8m9O512q4hU4ys_DW8GgOETzGRxyS19JCn_9Yf1pynzSMjwytIATvvyooJa19kMyFlAQkp3_uCCR6IrJWWUypkvzOrX80VVCEKtkgYdBF07oKIt2qpyu1Co3zWuwyBkV1kW1js28ecfYsF0Lkam40tq9v89DskGPKBpCoO0QQoK5ei3DH4kEtjbBjpPomcSQwFKF3cKqFEOM0ut7TEL4UxmZoqHwa9Dawt6S-R1z-FLhk5FRR7mcs4loaZyuS6g53ZJnqRTlrM05WIwZjXfx_kCL2C38aZQXL4Z5yFWm9JW-n4H4eAKLoSuc7ZNqsOVvpGRp2-DsBPiKWKdtS6d27eNcynadGUPzFft5avOddsd3pm7mDwHmmr60YWoDATK44N09g"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/checkuser?email=test@test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"checkuser"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test@test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"email\": \"test@test\",\r\n    \"answerdate\": \"2021-09-08T07:57:18.875+00:00\",\r\n    \"points\": 50,\r\n    \"hasbeencontacted\": false,\r\n    \"background\": null,\r\n    \"career\": null,\r\n    \"other\": null,\r\n    \"answers\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update contacted value",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEyYWZkYjliOGJmZmMyY2M4ZTU4NGQ2ZWE2ODlmYzEwYTg3MGI2NzgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZXhwZXJpcy1jb2RpbmctdGVzdCIsImF1ZCI6ImV4cGVyaXMtY29kaW5nLXRlc3QiLCJhdXRoX3RpbWUiOjE2MzE1Mjc3OTksInVzZXJfaWQiOiJpOXVyVW9tR2JxTlZJMUkxdWhadXhkMzBGMDcyIiwic3ViIjoiaTl1clVvbUdicU5WSTFJMXVoWnV4ZDMwRjA3MiIsImlhdCI6MTYzMTYxOTU3MCwiZXhwIjoxNjMxNjIzMTcwLCJlbWFpbCI6InNzQGguY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbInNzQGguY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.SCskOKsXNX37geIWtFLzuHJIgKT2aFkd7w9P-RrXWUrPP-9r2Hr-Gj8C1efw7s59N_oFnjq-8dqn2jwPMKG7MKrR5xIu4fVsYzVsVevOvCQ65c51IAhXeI7d62tOg995YoRn78d2IbmAnxpHeDBK_Xwj54QDJ6faCwvodmaO9yV3kFwMkrjlCkhI95rgIxfDVZf-fG9inSaQmV_h8qiAbKxScOdyB_bECqz2d5vrSxCDdFpwmG0V0Td9dzsgWBEMMCQi_FAlsGF-Ok2RYV51YhPjSafohatJzjh6m4370o5WRg5XIHnfHMaHZz9PeOnhLoyal7Zl_eLMahUZniobDw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"hasbeencontacted\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEyYWZkYjliOGJmZmMyY2M4ZTU4NGQ2ZWE2ODlmYzEwYTg3MGI2NzgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZXhwZXJpcy1jb2RpbmctdGVzdCIsImF1ZCI6ImV4cGVyaXMtY29kaW5nLXRlc3QiLCJhdXRoX3RpbWUiOjE2MzE1Mjc3OTksInVzZXJfaWQiOiJpOXVyVW9tR2JxTlZJMUkxdWhadXhkMzBGMDcyIiwic3ViIjoiaTl1clVvbUdicU5WSTFJMXVoWnV4ZDMwRjA3MiIsImlhdCI6MTYzMTYxOTU3MCwiZXhwIjoxNjMxNjIzMTcwLCJlbWFpbCI6InNzQGguY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbInNzQGguY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.SCskOKsXNX37geIWtFLzuHJIgKT2aFkd7w9P-RrXWUrPP-9r2Hr-Gj8C1efw7s59N_oFnjq-8dqn2jwPMKG7MKrR5xIu4fVsYzVsVevOvCQ65c51IAhXeI7d62tOg995YoRn78d2IbmAnxpHeDBK_Xwj54QDJ6faCwvodmaO9yV3kFwMkrjlCkhI95rgIxfDVZf-fG9inSaQmV_h8qiAbKxScOdyB_bECqz2d5vrSxCDdFpwmG0V0Td9dzsgWBEMMCQi_FAlsGF-Ok2RYV51YhPjSafohatJzjh6m4370o5WRg5XIHnfHMaHZz9PeOnhLoyal7Zl_eLMahUZniobDw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
