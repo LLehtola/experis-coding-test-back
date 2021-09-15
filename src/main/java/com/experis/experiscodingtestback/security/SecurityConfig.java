@@ -67,6 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         methods.add("GET");
         methods.add("POST");
         methods.add("PUT");
+        methods.add("PATCH");
         methods.add("DELETE");
         return methods;
     }
