@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(authEntryPointJwt)
                 .and().authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/v1/questions/test").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/v1/questions/additional").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/users/checkuser").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/users/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/answers/user/{userId}").permitAll()

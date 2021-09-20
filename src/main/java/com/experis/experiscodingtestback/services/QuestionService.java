@@ -23,13 +23,15 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
+
+
     /* Finds all questions by categories to separate lists
     * Checks the type of code questions and shuffles answer options if there is any
     * Shuffles all code questions and adds them to questions list
     * Returns a list which contains at first personal questions and after them shuffled code questions
     */
     public List<Question> getTestQuestions() {
-        List <Question> questions = questionRepository.findAllByCategory(QuestionCategory.PERSONAL.ordinal());
+        List <Question> questions = questionRepository.findAllByCategory(QuestionCategory.GENERAL.ordinal());
         List <Question> codeQuestions = questionRepository.findAllByCategory(QuestionCategory.CODE.ordinal());
         List <Question> shuffledQuestions = new ArrayList<>();
         for (Question question: codeQuestions) {
@@ -43,6 +45,11 @@ public class QuestionService {
         Collections.shuffle(shuffledQuestions);
         questions.addAll(shuffledQuestions);
         return questions;
+    }
+
+    public List<Question> getGeneralQuestions() {
+        List <Question> generalQuestions = questionRepository.findAllByCategory(QuestionCategory.ADDITIONAL.ordinal());
+        return generalQuestions;
     }
 
     /* Finds question by id
@@ -71,4 +78,6 @@ public class QuestionService {
     public List<Question> getQuestionsByAnswerId(long id) {
         return questionRepository.findAllByAnswersId(id);
     }
+
+
 }
