@@ -86,6 +86,7 @@ public class AnswerService {
             resultWrapper.setQuestion(question.getQuestion());
             resultWrapper.setCorrectAnswer(question.getCorrectAnswer());
             resultWrapper.setCode(question.getCode());
+            resultWrapper.setCategory(question.getCategory());
             userAnswers.add(resultWrapper);
         }
         return userAnswers;
