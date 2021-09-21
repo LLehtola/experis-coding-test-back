@@ -2,6 +2,7 @@ package com.experis.experiscodingtestback.services;
 
 import com.experis.experiscodingtestback.models.Answer;
 import com.experis.experiscodingtestback.models.Question;
+import com.experis.experiscodingtestback.models.QuestionCategory;
 import com.experis.experiscodingtestback.models.User;
 import com.experis.experiscodingtestback.models.wrappers.ResultWrapper;
 import com.experis.experiscodingtestback.repositories.AnswerRepository;
@@ -49,7 +50,9 @@ public class AnswerService {
             answer.setUser(user);
             answerRepository.save(answer);
             savedAnswers.add(answer);
-            result += checkResult(answer);
+            if (answer.getQuestion().getCategory() != QuestionCategory.ADDITIONAL) {
+                result += checkResult(answer);
+            }
         }
         user.setPoints(result);
         user.setAnswerdate(date);
