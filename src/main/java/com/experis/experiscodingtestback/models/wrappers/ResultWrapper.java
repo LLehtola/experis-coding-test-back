@@ -1,10 +1,13 @@
 package com.experis.experiscodingtestback.models.wrappers;
 
+import com.experis.experiscodingtestback.models.QuestionCategory;
+
 public class ResultWrapper {
     private String question;
     private String code;
     private String correctAnswer;
     private String userAnswer;
+    private QuestionCategory category;
 
     public String getUserAnswer() {
         return userAnswer;
@@ -36,5 +39,13 @@ public class ResultWrapper {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public QuestionCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(QuestionCategory category) {
+        this.category = category;
     }
 }
