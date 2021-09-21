@@ -47,9 +47,9 @@ public class QuestionService {
         return questions;
     }
 
-    public List<Question> getGeneralQuestions() {
-        List <Question> generalQuestions = questionRepository.findAllByCategory(QuestionCategory.ADDITIONAL.ordinal());
-        return generalQuestions;
+    public List<Question> getAdditionalQuestions() {
+        List <Question> additionalQuestions = questionRepository.findAllByCategory(QuestionCategory.ADDITIONAL.ordinal());
+        return additionalQuestions;
     }
 
     /* Finds question by id

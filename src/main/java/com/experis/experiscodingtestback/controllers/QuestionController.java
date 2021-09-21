@@ -26,9 +26,9 @@ public class QuestionController {
     }
 
     @GetMapping("/additional")
-    public ResponseEntity<List<Question>> getGeneralQuestions() {
-        List <Question> generalQuestions = questionService.getGeneralQuestions();
-        return new ResponseEntity<>(generalQuestions, HttpStatus.OK);
+    public ResponseEntity<List<Question>> getAdditionalQuestions() {
+        List <Question> additionalQuestions = questionService.getAdditionalQuestions();
+        return new ResponseEntity<>(additionalQuestions, HttpStatus.OK);
     }
 
     @GetMapping("/test")
